@@ -17,16 +17,20 @@
 using namespace std;
 
 struct VM {							// = virtual stack machine [wiki:VM]
-	string name;					// VM name
-	uint8_t M[Msz];					// main memory
-	uint32_t Ip;					// instruction pointer (in place of PC)
-	uint32_t Cp;					// compilation pointer
-	void compile(uint8_t);			// compile bytecode command
 	VM(string);						// constructor
 	string dump();					// = dump VM state
 	string head();					// short dump: name, sizes, state...
+	// metainfo
+	string name;					// VM name
 	static map<string,VM*> reg;		// registry (all VMs must be here)
 	static string reg_dump();		// dump registry
+	// memory
+	uint8_t M[Msz];					// main memory
+	uint32_t Ip;					// instruction pointer (in place of PC)
+	// compilation
+	uint32_t Cp;					// compilation pointer
+	void compile(uint8_t);			// compile bytecode command
+	// bytecode commands
 	void tick();					// execute one command:
 	void nop();						// do nothing (filler in code)
 	void bye();						// stop system
