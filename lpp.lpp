@@ -1,0 +1,8 @@
+%{
+#include "hpp.hpp"
+%}
+%option noyywrap yylineno
+%%
+#[^\n]*			{}						// drop line comments
+[ \t\r\n]		{}						// drop spaces
+.				{yyerror("lexer");}		// unknown char detected error
