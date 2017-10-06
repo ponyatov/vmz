@@ -4,5 +4,15 @@
 %option noyywrap yylineno
 %%
 #[^\n]*			{}						// drop line comments
+
+										/* .directives [wiki:directive] */
+(?i:\.vm)		{return dotVM;}			// define new VM
+
+										/* machine commands ByeCode */
+nop				BC(NOP)
+bye				BC(BYE)
+
+[a-zA-Z0-9_]+	{yylval.s = new string(yytext); return SYM;}	// some symbol
+
 [ \t\r\n]		{}						// drop spaces
 .				{yyerror("lexer");}		// unknown char detected error

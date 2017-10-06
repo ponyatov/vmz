@@ -1,7 +1,19 @@
 %{
 #include "hpp.hpp"
+VM* target=NULL;		// target VM will be used by compiler
 %}
-%defines %union {string *s; }
+%defines %union {string *s; uint8_t cmd; }
 %token <s> SYM
+%token <cmd> CMD
+%token dotVM
 %%
-REPL : | REPL SYM { cout << $2 << endl; }
+REPL : 
+	| dotVM SYM	{										// = .VM directive
+		target = new VM(*$2);							// create new VM
+		current = target;								// last VM will be init
+		cout << "created "<< current->dump() << endl;	// dump current VM
+		cout << VM::reg_dump();							// dump registry
+		cout << endl; }
+	| REPL CMD	{ target->compile($2); }				// compile command
+	| REPL SYM	{ cout << '<'<< *$2 <<'>' << endl; }	// recursive next
+;
