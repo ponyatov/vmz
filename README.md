@@ -10,4 +10,4 @@ Our system will use:
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> , GNU LesserGPL
 
-github: https://github.com/ponyatov/vmz
+github: https://github.com/ponyatov/vm
