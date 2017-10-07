@@ -1,5 +1,6 @@
+import sys ; sys.stdout = open('log.log','w')
+
 ####### VIRTUAL MACHINE ########
-from wx.py import interpreter
 
 _bye = False                # stop system semaphore
 
