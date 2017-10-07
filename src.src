@@ -7,3 +7,8 @@
 nop
 bye
 
+.VM FORTH
+
+: INTERPRET
+	begin BL WORD FIND EXECUTE again
+;
