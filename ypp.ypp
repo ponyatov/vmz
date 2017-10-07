@@ -5,10 +5,10 @@ VM* target=NULL;		// target VM will be used by compiler
 %defines %union {string *s; uint8_t cmd; }
 %token <s> SYM
 %token <cmd> CMD
-%token dotVM
+%token pVM
 %%
 REPL : 
-	| dotVM SYM	{										// = .VM directive
+	| pVM SYM	{										// = .VM directive
 		target = new VM(*$2);							// create new VM
 		current = target;								// last VM will be init
 		cout << "created "<< current->dump() << endl;	// dump current VM

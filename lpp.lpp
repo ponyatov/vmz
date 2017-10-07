@@ -6,7 +6,7 @@
 #[^\n]*			{}						// drop line comments
 
 										/* .directives [wiki:directive] */
-(?i:\.vm)		{return dotVM;}			// define new VM
+(?i:\.vm)		{return pVM;}			// define new VM
 
 										/* machine commands ByeCode */
 nop				BC(NOP)
