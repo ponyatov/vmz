@@ -1,7 +1,12 @@
-# vmz
-### VM Zen
+# vm
+## VM Zen
+### Cluster-friendly virtual machine based on async message passing.
 
-ByteCode VM/Interpreter
+Our system will use:
+* Queue as data transfer method
+* Live object system see SmallTalk
+* Each object will use isolated address space and separate context
+* System is built from micro servers interacts via message sending.
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> , GNU LesserGPL
 
