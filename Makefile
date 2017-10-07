@@ -1,4 +1,7 @@
-log.log: src.src ./exe.exe
+log.log: src.src ./VMZ.py
+	python ./VMZ.py > $@ && tail $(TAIL) $@  
+
+cpp.log: src.src ./exe.exe
 	./exe.exe < $< > $@ && tail $(TAIL) $@
 C = cpp.cpp ypp.tab.cpp lex.yy.c
 H = hpp.hpp ypp.tab.hpp
